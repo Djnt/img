@@ -1,38 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-const argsSet = [
-  { 
-    weight: 500,
-    caps: 'first',
-    space: true
-  },
-  {
-    weight: 500,
-    caps: 'revert',
-    space: false
-  },
-  {
-    weight: 500,
-    caps: 'all',
-    space: true
-  },
-  {
-    weight: 600,
-    caps: 'first',
-    space: false
-  },
-  {
-    weight: [500, 600],
-    caps: 'first',
-    space: false
-  },
-  {
-    weight: 600,
-    caps: 'all',
-    space: 'newline'
-  }
-]
-
 const generateItem = args => {
   let result;
   let name = args.name.split(' ')
