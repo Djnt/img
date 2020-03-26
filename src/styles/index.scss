@@ -155,6 +155,8 @@ body {
       cursor: pointer;
       margin-left: auto;
       margin-right: auto;
+      box-sizing: border-box;
+      min-height: 125px;
 
       &:hover {
         background-color: rgba(22, 21, 21, 0.753);
