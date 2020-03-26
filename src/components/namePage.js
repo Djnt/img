@@ -11,10 +11,10 @@ export const NamePage = props => {
 
   return (
     <div className='col-12 col-md-2 offset-md-5 name-page'>
-      <input type='text' placeholder='Enter Yout Business Name' onChange={ e => setName(e.target.value)}></input>
+      <input type='text' placeholder='Enter Your Business Name' onChange={ e => setName(e.target.value)}></input>
       <button className={name ? '' : 'disabled'} onClick={ confirmName }>NEXT</button>
       <div className='foot'>
-        <h3>"Dream Big. Start Small...</h3>
+        <h3>"Dream Big. Start Small. But most of all, Start."</h3>
         <h4>- Simon Sinek</h4>
       </div>
     </div>
