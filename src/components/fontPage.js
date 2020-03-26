@@ -34,7 +34,6 @@ const argsSet = [
 ]
 
 const generateItem = args => {
-  console.log(args)
   let result;
   let name = args.name.split(' ')
   const first_word = name.shift()

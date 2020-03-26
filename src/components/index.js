@@ -27,7 +27,6 @@ export default class PageContainer extends Component {
 
   generateImage = e => {
     e.stopPropagation()
-    console.log(e.target, e)
     e.target.style.backgroundColor = this.state.color[1]
 
     html2canvas(e.target, {
