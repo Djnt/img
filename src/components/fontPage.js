@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 
 const generateItem = args => {
   let result;
@@ -44,6 +44,14 @@ const generateItem = args => {
 }
 
 export const FontPage = props =>  {
+
+  const [fontEl, setFontEl] = useState(null);
+
+  const submitStyle = () => {
+    console.log(fontEl)
+    props.next(fontEl)
+  }
+
   return (
     <div className='col-12 col-md-4 offset-md-4 font-page'>
       <h2>Let's figure out your style next</h2>
@@ -52,13 +60,14 @@ export const FontPage = props =>  {
       <div className='fonts-block'>
         {new Array(6).fill().map((i, index) => {
           return (
-            <div className='font-option' onClick={e => props.next(e)}>
+            <div className='font-option' onClick={e => setFontEl(e.target)}>
               {generateItem({index, name: props.name})}
             </div>
           )
         })}
 
       </div>
+      {fontEl && <button className='next-button' onClick={submitStyle}>GENERATE LOGO</button>}
     </div>
   )
 }

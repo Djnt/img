@@ -26,7 +26,7 @@ export const ColorPage = props =>  {
           )
         })}
       </div>
-      {color && <button onClick={ () => props.next(color) }>NEXT</button>}
+      {color && <button className='next-button' onClick={ () => props.next(color) }>NEXT</button>}
     </div>
   )
 }

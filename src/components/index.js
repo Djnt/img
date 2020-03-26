@@ -26,10 +26,9 @@ export default class PageContainer extends Component {
   }
 
   generateImage = e => {
-    e.stopPropagation()
-    e.target.style.backgroundColor = this.state.color[1]
+    e.style.backgroundColor = this.state.color[1]
 
-    html2canvas(e.target, {
+    html2canvas(e, {
       onrendered: (canvas) => {
         Canvas2Image.saveAsJPEG(canvas);
         this.resetPages();
