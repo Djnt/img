@@ -64,14 +64,16 @@ export default class PageContainer extends Component {
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(svgText));
         element.setAttribute('download', 'logo.svg');
-      
         element.style.display = 'none';
         document.body.appendChild(element);
-      
         element.click();
-      
+
+        let img = Canvas2Image.saveAsJPEG(canvas, true);
+        element.setAttribute('href', img.src);
+        element.setAttribute('download', 'logo.jpeg');
+        element.click();
         document.body.removeChild(element);
-        Canvas2Image.saveAsJPEG(canvas);
+
         this.resetPages();
       }
     });
