@@ -120,7 +120,7 @@ body {
 }
 
 .font-page {
-  text-align: left;
+  text-align: center;
   h2 {
     margin-top: 30px;
     font-size: 18px;
@@ -153,6 +153,14 @@ body {
 
       &:hover {
         background-color: rgba(22, 21, 21, 0.753);
+      }
+
+      div {
+        pointer-events: none;
+
+        div {
+          pointer-events: none;
+        }
       }
     }
   }

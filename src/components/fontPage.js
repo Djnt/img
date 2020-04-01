@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 
 const generateItem = args => {
   let result;
@@ -33,10 +33,10 @@ const generateItem = args => {
       </div>
     break;
     case 5:
-      result = <div>
+      result = <Fragment>
         <div style={{ textTransform: 'uppercase', textAlign: 'center', fontWeight: 600}}>{first_word}</div>
         {last_word && <div style={{ textTransform: 'uppercase', textAlign: 'center', fontWeight: 600}}>{last_word}</div>}
-      </div>
+      </Fragment>
     break;
   }
 
@@ -48,7 +48,6 @@ export const FontPage = props =>  {
   const [fontEl, setFontEl] = useState(null);
 
   const submitStyle = () => {
-    console.log(fontEl)
     props.next(fontEl)
   }
 
