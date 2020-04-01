@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import JSZip from "jszip";
+import { Base64 } from 'js-base64';
 
 import NamePage from './namePage'
 import ColorPage from './colorPage'
@@ -61,20 +63,38 @@ export default class PageContainer extends Component {
     html2canvas(e, {
       onrendered: (canvas) => {
         const svgText = document.getElementById('svg-result').innerHTML
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(svgText));
-        element.setAttribute('download', 'logo.svg');
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
+        let img = Canvas2Image.saveAsPNG(canvas, true);
 
-        let img = Canvas2Image.saveAsJPEG(canvas, true);
-        element.setAttribute('href', img.src);
-        element.setAttribute('download', 'logo.jpeg');
-        element.click();
-        document.body.removeChild(element);
+        var zip = new JSZip();
+        zip.file("logo.svg", svgText);
 
-        this.resetPages();
+        var binary = atob(img.src.split(',')[1]);
+        var array = [];
+        for(var i = 0; i < binary.length; i++) {
+          array.push(binary.charCodeAt(i));
+        }
+        
+        var the_file = new Blob([new Uint8Array(array)],  {type: 'image/png', encoding: 'utf-8'})
+      
+
+        zip.file("logo.png", the_file);
+
+        zip.generateAsync({type:"blob"}).then(blob => {
+          var a = new FileReader();
+
+          a.onload = e => {
+            var element = document.createElement('a');
+            element.setAttribute('href', e.target.result);
+            element.setAttribute('download', 'logos.zip');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            this.resetPages();
+          }
+
+          a.readAsDataURL(blob);
+        })
       }
     });
   }
